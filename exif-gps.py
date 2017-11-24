@@ -13,7 +13,9 @@ parser.add_argument('file', help="The file you want to update. Exiftool must be 
 args = parser.parse_args()
 
 # Validate file path
-os.path.isfile(args.file)
+if not os.path.isfile(args.file):
+        print "Please provide a valid file path."
+        sys.exit()
 
 # Test internet connection
 def internet(host="8.8.8.8", port=53, timeout=3):
